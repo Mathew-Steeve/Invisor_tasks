@@ -1,0 +1,29 @@
+[
+  {
+    "id": 101,
+    "name": "Laptop Pro X",
+    "category": "Electronics",
+    "price": 1299.99,
+    "currency": "USD",
+    "inStock": true,
+    "description": "Powerful laptop for professionals with a high-resolution display and long battery life."
+  },
+  {
+    "id": 102,
+    "name": "Wireless Headphones Z",
+    "category": "Audio",
+    "price": 199.50,
+    "currency": "USD",
+    "inStock": false,
+    "description": "Premium wireless headphones with noise cancellation and superior sound quality."
+  },
+  {
+    "id": 103,
+    "name": "Ergonomic Office Chair",
+    "category": "Furniture",
+    "price": 349.00,
+    "currency": "USD",
+    "inStock": true,
+    "description": "Comfortable and adjustable office chair designed for long working hours."
+  }
+]
