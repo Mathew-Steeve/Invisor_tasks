@@ -11,7 +11,7 @@
            header("Location:login.php");  
        }
 
-          echo $_SESSION['use'];
+          echo $_SESSION['use'] .'<br>';
 
           echo "Login Success";
 
