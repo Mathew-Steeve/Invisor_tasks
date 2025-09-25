@@ -1,6 +1,6 @@
 <?php
- session_start();
+//  session_start();
 
   echo "Logout Successfully ";
-  session_destroy();    
+  // session_destroy();    
 ?>
