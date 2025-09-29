@@ -1,10 +1,45 @@
 <?php
 session_start();
+include 'connection.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$conn = mysqli_connect("localhost", "root", "", "new_user_db");
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+// $conn = mysqli_connect("localhost", "root", "", "new_user_db");
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+function sendLoginEmail($toEmail)
+{
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';            
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'sampleudemy2@gmail.com';      
+        $mail->Password   = 'add password';         
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        $mail->setFrom('sampleudemy2@gmail.com', 'Profile Manager');
+        $mail->addAddress($toEmail);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Login Notification';
+        $mail->Body    = "
+            <p>Hello <strong>{$toEmail}</strong>,</p>
+            <p>You have successfully logged in on " . date("Y-m-d H:i:s") . ".</p>
+            <p>If this wasn't you, please contact support immediately.</p>
+        ";
+
+        $mail->send();
+    } catch (Exception $e) {
+        error_log("Mailer Error: " . $mail->ErrorInfo);
+    }
 }
 
 $error = "";
@@ -23,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($password == $row['password']){
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_email'] = $row['email'];
+            sendLoginEmail($row['email']);
 
             header("Location: profile.php");
             exit;

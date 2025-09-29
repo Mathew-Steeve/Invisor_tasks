@@ -1,14 +1,15 @@
 <?php
-$servername = "localhost";  
-$username   = "root";       
-$password   = "";           
-$dbname     = "new_user_db";
+// $servername = "localhost";  
+// $username   = "root";       
+// $password   = "";           
+// $dbname     = "new_user_db";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
+include 'connection.php';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name  = trim($_POST['name']);
